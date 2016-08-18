@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818213914) do
+ActiveRecord::Schema.define(version: 20160818214709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,29 @@ ActiveRecord::Schema.define(version: 20160818213914) do
 
   add_index "brands_products", ["brand_id", "product_id"], name: "index_brands_products_on_brand_id_and_product_id", using: :btree
   add_index "brands_products", ["product_id", "brand_id"], name: "index_brands_products_on_product_id_and_brand_id", using: :btree
+
+  create_table "features", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "features_photos", id: false, force: :cascade do |t|
+    t.integer "feature_id", null: false
+    t.integer "photo_id",   null: false
+  end
+
+  add_index "features_photos", ["feature_id", "photo_id"], name: "index_features_photos_on_feature_id_and_photo_id", using: :btree
+  add_index "features_photos", ["photo_id", "feature_id"], name: "index_features_photos_on_photo_id_and_feature_id", using: :btree
+
+  create_table "features_products", id: false, force: :cascade do |t|
+    t.integer "feature_id", null: false
+    t.integer "product_id", null: false
+  end
+
+  add_index "features_products", ["feature_id", "product_id"], name: "index_features_products_on_feature_id_and_product_id", using: :btree
+  add_index "features_products", ["product_id", "feature_id"], name: "index_features_products_on_product_id_and_feature_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.datetime "created_at",        null: false

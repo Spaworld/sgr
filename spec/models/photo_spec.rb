@@ -4,7 +4,7 @@ RSpec.describe Photo, type: :model do
 
   it 'has a valid factory' do
     expect(build(:photo)).to be_valid
-  end
+ end
 
   context 'associations' do
 
