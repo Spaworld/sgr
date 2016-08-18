@@ -15,6 +15,8 @@ gem 'puma'
 gem 'pry-rails'
 gem 'pry-byebug'
 
+gem "paperclip", "~> 5.0.0"
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'

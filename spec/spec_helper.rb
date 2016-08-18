@@ -1,5 +1,6 @@
 require 'factory_girl_rails'
 require 'support/database_cleaner'
+require 'paperclip/matchers'
 
 RSpec.configure do |config|
 
@@ -15,5 +16,13 @@ RSpec.configure do |config|
 
   # Factory Girl
   config.include FactoryGirl::Syntax::Methods
+
+  # Shouldas for Paperclip
+  config.include Paperclip::Shoulda::Matchers
+
+  # removes test Paperclip images
+  config.after(:suite) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+  end
 
 end
