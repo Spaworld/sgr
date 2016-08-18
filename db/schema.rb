@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818214709) do
+ActiveRecord::Schema.define(version: 20160818215918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20160818214709) do
 
   add_index "brands_products", ["brand_id", "product_id"], name: "index_brands_products_on_brand_id_and_product_id", using: :btree
   add_index "brands_products", ["product_id", "brand_id"], name: "index_brands_products_on_product_id_and_brand_id", using: :btree
+
+  create_table "brands_ratings", id: false, force: :cascade do |t|
+    t.integer "brand_id",  null: false
+    t.integer "rating_id", null: false
+  end
+
+  add_index "brands_ratings", ["brand_id", "rating_id"], name: "index_brands_ratings_on_brand_id_and_rating_id", using: :btree
+  add_index "brands_ratings", ["rating_id", "brand_id"], name: "index_brands_ratings_on_rating_id_and_brand_id", using: :btree
 
   create_table "features", force: :cascade do |t|
     t.string   "name"
@@ -84,6 +92,20 @@ ActiveRecord::Schema.define(version: 20160818214709) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "products_ratings", id: false, force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "rating_id",  null: false
+  end
+
+  add_index "products_ratings", ["product_id", "rating_id"], name: "index_products_ratings_on_product_id_and_rating_id", using: :btree
+  add_index "products_ratings", ["rating_id", "product_id"], name: "index_products_ratings_on_rating_id_and_product_id", using: :btree
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "stars"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
