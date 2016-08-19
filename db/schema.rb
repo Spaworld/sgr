@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818215918) do
+ActiveRecord::Schema.define(version: 20160819231418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20160818215918) do
   create_table "features", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
+    t.integer  "rating_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -69,6 +70,14 @@ ActiveRecord::Schema.define(version: 20160818215918) do
 
   add_index "features_products", ["feature_id", "product_id"], name: "index_features_products_on_feature_id_and_product_id", using: :btree
   add_index "features_products", ["product_id", "feature_id"], name: "index_features_products_on_product_id_and_feature_id", using: :btree
+
+  create_table "features_ratings", id: false, force: :cascade do |t|
+    t.integer "feature_id", null: false
+    t.integer "rating_id",  null: false
+  end
+
+  add_index "features_ratings", ["feature_id", "rating_id"], name: "index_features_ratings_on_feature_id_and_rating_id", using: :btree
+  add_index "features_ratings", ["rating_id", "feature_id"], name: "index_features_ratings_on_rating_id_and_feature_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.datetime "created_at",        null: false
@@ -90,8 +99,9 @@ ActiveRecord::Schema.define(version: 20160818215918) do
   create_table "products", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "rating",      default: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "products_ratings", id: false, force: :cascade do |t|

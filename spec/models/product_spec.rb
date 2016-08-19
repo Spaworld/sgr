@@ -14,7 +14,6 @@ RSpec.describe Product, type: :model do
     it { should have_and_belong_to_many(:brands) }
     it { should have_and_belong_to_many(:features) }
     it { should have_and_belong_to_many(:photos) }
-    it { should have_and_belong_to_many(:ratings) }
 
   end
 
@@ -28,9 +27,14 @@ RSpec.describe Product, type: :model do
       @product.destroy
     end
 
-    it 'should call .clear on ratings before_destory' do
-      expect(@product.ratings).to receive(:clear)
-      @product.destroy
+  end
+
+  context 'features' do
+
+    let(:features) { create_list(:feature, 3) }
+
+    it 'should load existing list of features' do
+      expect(subject.features).to match(features)
     end
 
   end
