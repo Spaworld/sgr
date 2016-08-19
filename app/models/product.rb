@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
   has_and_belongs_to_many :photos
   has_and_belongs_to_many :ratings
 
-  # TODO: add before_destroy call_backs
-  # (i.e.: before_destroy { features.clear } )
+  after_destroy { ratings.clear }
+  after_destroy { photos.clear }
 
 end
