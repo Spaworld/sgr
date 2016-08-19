@@ -1,0 +1,9 @@
+#header{
+  .contact-info{
+    text-align: right;
+    @include media-breakpoint-up(sm){
+      margin-top:3rem;
+    }
+  }
+}
+
