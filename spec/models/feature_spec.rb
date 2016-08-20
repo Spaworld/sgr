@@ -12,7 +12,7 @@ RSpec.describe Feature, type: :model do
     context 'associations' do
 
       it { should have_and_belong_to_many(:photos) }
-      it { should have_and_belong_to_many(:products) }
+      it { should have_many(:products).through(:product_features) }
 
     end
 

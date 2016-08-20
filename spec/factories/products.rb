@@ -6,6 +6,11 @@ FactoryGirl.define do
     trait :with_photos do
       photos    { build_list(:photo, 1) }
     end
+    trait :with_rated_features do
+      after(:create) do |product|
+        product.features << create(:feature, :with_rating)
+      end
+    end
   end
 
 end

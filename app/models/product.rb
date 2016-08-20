@@ -1,17 +1,13 @@
 class Product < ActiveRecord::Base
 
-  attr_reader :features
-
   validates_presence_of :title, :description
 
   has_and_belongs_to_many :brands
-  has_and_belongs_to_many :features
   has_and_belongs_to_many :photos
 
-  after_destroy { photos.clear }
+  has_many :product_features
+  has_many :features, through: :product_features
 
-  def features
-    Feature.all
-  end
+  after_destroy { photos.clear }
 
 end

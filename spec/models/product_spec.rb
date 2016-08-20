@@ -12,8 +12,8 @@ RSpec.describe Product, type: :model do
   context 'associations' do
 
     it { should have_and_belong_to_many(:brands) }
-    it { should have_and_belong_to_many(:features) }
     it { should have_and_belong_to_many(:photos) }
+    it { should have_many(:features).through(:product_features) }
 
   end
 
@@ -31,10 +31,14 @@ RSpec.describe Product, type: :model do
 
   context 'features' do
 
-    let(:features) { create_list(:feature, 3) }
+    let(:product)  { create(:product, :with_rated_features) }
 
     it 'should load existing list of features' do
-      expect(subject.features).to match(features)
+      expect(product.features).to_not be_empty
+    end
+
+    it 'should have rated features' do
+      expect(product.features.first.ratings.count).to eq(1)
     end
 
   end
