@@ -39,18 +39,9 @@ ActiveRecord::Schema.define(version: 20160819235158) do
   add_index "brands_products", ["brand_id", "product_id"], name: "index_brands_products_on_brand_id_and_product_id", using: :btree
   add_index "brands_products", ["product_id", "brand_id"], name: "index_brands_products_on_product_id_and_brand_id", using: :btree
 
-  create_table "brands_ratings", id: false, force: :cascade do |t|
-    t.integer "brand_id",  null: false
-    t.integer "rating_id", null: false
-  end
-
-  add_index "brands_ratings", ["brand_id", "rating_id"], name: "index_brands_ratings_on_brand_id_and_rating_id", using: :btree
-  add_index "brands_ratings", ["rating_id", "brand_id"], name: "index_brands_ratings_on_rating_id_and_brand_id", using: :btree
-
   create_table "features", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "rating_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -62,22 +53,6 @@ ActiveRecord::Schema.define(version: 20160819235158) do
 
   add_index "features_photos", ["feature_id", "photo_id"], name: "index_features_photos_on_feature_id_and_photo_id", using: :btree
   add_index "features_photos", ["photo_id", "feature_id"], name: "index_features_photos_on_photo_id_and_feature_id", using: :btree
-
-  create_table "features_products", id: false, force: :cascade do |t|
-    t.integer "feature_id", null: false
-    t.integer "product_id", null: false
-  end
-
-  add_index "features_products", ["feature_id", "product_id"], name: "index_features_products_on_feature_id_and_product_id", using: :btree
-  add_index "features_products", ["product_id", "feature_id"], name: "index_features_products_on_product_id_and_feature_id", using: :btree
-
-  create_table "features_ratings", id: false, force: :cascade do |t|
-    t.integer "feature_id", null: false
-    t.integer "rating_id",  null: false
-  end
-
-  add_index "features_ratings", ["feature_id", "rating_id"], name: "index_features_ratings_on_feature_id_and_rating_id", using: :btree
-  add_index "features_ratings", ["rating_id", "feature_id"], name: "index_features_ratings_on_rating_id_and_feature_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.datetime "created_at",        null: false
@@ -99,31 +74,16 @@ ActiveRecord::Schema.define(version: 20160819235158) do
   create_table "product_features", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "feature_id"
-    t.integer  "rating_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.float    "rating",     default: 4.0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "rating",      default: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  create_table "products_ratings", id: false, force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "rating_id",  null: false
-  end
-
-  add_index "products_ratings", ["product_id", "rating_id"], name: "index_products_ratings_on_product_id_and_rating_id", using: :btree
-  add_index "products_ratings", ["rating_id", "product_id"], name: "index_products_ratings_on_rating_id_and_product_id", using: :btree
-
-  create_table "ratings", force: :cascade do |t|
-    t.integer  "stars"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end

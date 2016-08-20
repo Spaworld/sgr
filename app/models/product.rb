@@ -10,4 +10,10 @@ class Product < ActiveRecord::Base
 
   after_destroy { photos.clear }
 
+  def rating
+    return 4 unless features.present?
+    (features.map(&:rating).inject(:+)) / features.count
+
+  end
+
 end
