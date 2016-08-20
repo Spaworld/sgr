@@ -13,7 +13,6 @@ RSpec.describe Brand, type: :model do
 
     it { should have_and_belong_to_many(:photos) }
     it { should have_and_belong_to_many(:products) }
-    it { should have_and_belong_to_many(:ratings) }
 
   end
 

@@ -29,18 +29,4 @@ RSpec.describe Product, type: :model do
 
   end
 
-  context 'features' do
-
-    let(:product)  { create(:product, :with_rated_features) }
-
-    it 'should load existing list of features' do
-      expect(product.features).to_not be_empty
-    end
-
-    it 'should have rated features' do
-      expect(product.features.first.ratings.count).to eq(1)
-    end
-
-  end
-
 end

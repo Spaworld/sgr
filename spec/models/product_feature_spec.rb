@@ -10,7 +10,6 @@ RSpec.describe ProductFeature, type: :model do
 
     it { should belong_to(:product) }
     it { should belong_to(:feature) }
-    it { should belong_to(:rating) }
 
   end
 
