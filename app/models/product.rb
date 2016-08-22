@@ -10,10 +10,12 @@ class Product < ActiveRecord::Base
 
   after_destroy { photos.clear }
 
-  def rating
+  def total_rating
     return 4 unless features.present?
-    (features.map(&:rating).inject(:+)) / features.count
-
+    all_ratings = features.map do |feature|
+      feature.rating_by_product(id)
+    end
+    all_ratings.inject(:+) / features.count
   end
 
 end

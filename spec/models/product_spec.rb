@@ -38,16 +38,23 @@ RSpec.describe Product, type: :model do
     before(:each) do; product.features << feature end
 
     it 'should return rating of 4 by default' do
-      expect(subject.rating).to eq(4)
+      expect(subject.total_rating).to eq(4)
     end
 
     it 'should return a feature with rating' do
-      expect(product.features.first.rating).to eq(4)
+      expect(product.features.sample.rating_by_product(product.id)).to_not be_nil
     end
 
     it 'should calculate average number of feature ratings' do
-      product.features << create(:feature, :with_rating_of_3)
-      expect(product.rating).to eq(3.75)
+      product.features << create(:feature, :with_rating)
+
+      all_ratings = product.features.map do |feature|
+        feature.rating_by_product(product.id)
+      end
+
+      expect(product.total_rating).to eq(
+        all_ratings.inject(:+) / product.features.count
+      )
     end
 
   end

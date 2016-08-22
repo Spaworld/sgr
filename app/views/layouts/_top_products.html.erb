@@ -1,0 +1,12 @@
+<ul class="list-group list-group-flush">
+  <a href="#" class="list-group-item disabled">
+    Top Products
+  </a>
+  <% @top_products.each do |product| %>
+    <li class="list-group-item">
+    <strong> <%= product.title %> </strong>
+    <br/>
+    <%= render partial: 'layouts/rating', locals: { score: product.total_rating.to_i } %>  </td>
+  </li>
+<% end %>
+</ul>

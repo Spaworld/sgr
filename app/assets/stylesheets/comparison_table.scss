@@ -1,0 +1,13 @@
+@import 'globals';
+.comparison-table{
+  th{
+    text-align: center;
+  }
+  td{
+    vertical-align: middle;
+  }
+  .fa-star{
+    color: $warning-color;
+  }
+}
+

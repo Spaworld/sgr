@@ -16,4 +16,26 @@ RSpec.describe Feature, type: :model do
 
     end
 
+    context 'rating' do
+
+      let(:product) { create(:product) }
+      let(:feature) { create(:feature) }
+
+      it 'should respond_to rating' do
+        expect(subject).to respond_to(:rating_by_product)
+      end
+
+      it 'should return the default rating of 4' do
+        product.features << feature
+        expect(product.features.last.rating_by_product(product.id)).to eq(4)
+      end
+
+      it 'should update product.feature.rating' do
+        product.features << feature
+        product.features.last.update_rating(product.id, 3.33)
+        expect(product.features.last.rating_by_product(product.id)).to eq(3.33)
+      end
+
+    end
+
 end

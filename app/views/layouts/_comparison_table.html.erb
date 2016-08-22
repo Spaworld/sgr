@@ -1,0 +1,29 @@
+<table class="comparison-table table table-sm table-bordered table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <% @comparison_table.brand_names.each do |brand_name| %>
+        <th>
+          <%= image_tag @comparison_table.header_brand_image(brand_name) %>
+          <%= brand_name %> </th>
+
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @comparison_table.features.each do |feature| %>
+    <tr>
+      <th scope="row">
+        <%= image_tag feature.photos.first.file(:micro) %>
+        <br/>
+        <%= feature.name %>
+      </th>
+      <% feature.products_ratings(@comparison_table.products).each do |rating| %>
+        <td>
+          <%= render partial: 'layouts/rating', locals: { score: rating.to_i } %>  </td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
