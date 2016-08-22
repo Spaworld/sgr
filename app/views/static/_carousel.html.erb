@@ -6,11 +6,11 @@
   </ol>
   <div class="carousel-inner" role="listbox">
     <% Product.all.each_with_index do |product, index| %>
-      <div class="carousel-item <%= 'active' if index == 0 %> ">
+      <div class="carousel-item <%= 'active' if index == 0 %>">
         <%= image_tag product.photos.first.file(:medium) %>
-        <div class="carousel-caption">
+        <div class="carousel-caption bg-inverse">
           <h3><%= product.title %></h3>
-          <p><%= product.description %></p>
+          <p><%= product.description.first(20) %></p>
         </div>
       </div>
     <% end %>
