@@ -5,7 +5,7 @@
   <% @top_products.each do |product| %>
       <li class="list-group-item list-group-item-action">
         <h5 class="list-group-item-heading"> <%= product.title %> </h5>
-        <%= image_tag product.photos.first.file(:thumb) %><br/>
+        <%= image_tag product.photos.first.file(:thumb), class: 'img-responsive' %><br/>
         <%= render partial: 'layouts/rating', locals: { score: product.total_rating.to_i } %>
       <p class="list-group-item-text">
         <%= product.description.first(50) %>

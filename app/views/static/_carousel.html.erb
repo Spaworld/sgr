@@ -1,5 +1,5 @@
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
+  <ol class="carousel-indicators hidden-sm-down">
     <% Product.ids.each_with_index do |id, index| %>
       <li data-target="#carousel-example-generic" data-slide-to="<%= index %>" <%= 'class="active"' if index == 0 %>></li>
   <% end %>
@@ -8,7 +8,7 @@
     <% Product.all.each_with_index do |product, index| %>
       <div class="carousel-item <%= 'active' if index == 0 %>">
         <%= image_tag product.photos.first.file(:medium) %>
-        <div class="carousel-caption bg-inverse">
+        <div class="carousel-caption bg-inverse hidden-sm-down">
           <h3><%= product.title %></h3>
           <p><%= product.description.first(20) %></p>
         </div>
