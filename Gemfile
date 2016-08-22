@@ -24,11 +24,11 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 
+gem 'faker'
 gem 'factory_girl_rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
-  gem 'faker'
   gem 'capybara'
 end
 
