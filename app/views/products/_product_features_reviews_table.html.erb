@@ -1,0 +1,15 @@
+<table class="table table-sm table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Feature:</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% product.features.each do |feature| %>
+  <tr>
+    <th scope="row"><%= feature.name %></th>
+    <td><%= render partial: 'layouts/rating', locals: { score: feature.rating_by_product(product.id).to_i } %></td>
+  </tr>
+<% end %>
+</table>

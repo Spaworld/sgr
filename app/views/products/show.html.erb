@@ -1,0 +1,6 @@
+<div class="product-show col-xs-12">
+  <h1><%= @product.title %></h1>
+  <%= image_tag @product.photos.first.file, class: 'img-responsive', height: '500px' %>
+  <p><%= @product.description %></p>
+  <%= render partial: 'products/product_features_reviews_table', locals: { product: @product } %>
+</div>

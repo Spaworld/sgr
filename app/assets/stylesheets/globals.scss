@@ -5,6 +5,9 @@ $light-grey:    whitesmoke;
 body{
   background-color: $light-grey;
 }
+.fa-star{
+  color: $warning-color;
+}
 .navbar-toggler{
   color: $white;
 }

@@ -1,0 +1,9 @@
+<div class="card">
+  <%= image_tag product.photos.first.file(:thumb), class: 'card-img-top img-responsive' %>
+  <div class="card-block">
+    <h4 class="card-title"><%= product.title %></h4>
+    <p class="card-text"><%= product.description %></p>
+    <p class="card-text"><small class="text-muted"><strong>Rating:</strong> <br/><%= render partial: 'layouts/rating', locals: { score: product.total_rating.to_i } %></small></p>
+    <%= link_to 'See more', brand_product_path(product.brands.first, product), class: 'btn btn-primary' %>
+  </div>
+</div>
