@@ -1,0 +1,8 @@
+<div class="card">
+  <%= image_tag brand.products.first.photos.first.file(:medium), class: 'card-img-top' %>
+  <div class="card-block">
+    <h4 class="card-title"><%= brand.name %></h4>
+    <p class="card-text"><%= brand.description %></p>
+    <%= link_to "Go to brand", brand_path(brand), class: 'btn btn-primary' %>
+  </div>
+</div>

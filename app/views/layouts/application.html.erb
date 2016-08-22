@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Sgr</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
+<head>
+<title>Sgr</title>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= csrf_meta_tags %>
+</head>
+<body>
 
-  <%= render 'layouts/header' %>
+<%= render 'layouts/header' %>
 
-  <%= yield %>
+<div class="container" >
+  <div class="row">
+    <div class="col-sm-9">
+      <%= yield %>
+    </div><!--end col-sm-9-->
+    <div class="col-sm-3">
+      <%= render 'layouts/top_products' %>
+    </div><!--end col-sm-3-->`
+  </div>
+</div>
 
-  </body>
+</body>
 </html>

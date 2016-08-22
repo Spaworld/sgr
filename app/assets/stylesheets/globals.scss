@@ -1,6 +1,10 @@
 $warning-color: #f0ad4e;
 $white:         white;
+$light-grey:    whitesmoke;
 
+body{
+  background-color: $light-grey;
+}
 .navbar-toggler{
   color: $white;
 }
