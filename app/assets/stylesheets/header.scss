@@ -1,4 +1,9 @@
 #header{
+  a{
+    &:hover{
+      text-decoration: none;
+    }
+  }
   .contact-info{
     text-align: right;
     @include media-breakpoint-up(sm){
