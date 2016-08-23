@@ -11,8 +11,16 @@ class Feature < ActiveRecord::Base
     product_feature(product_id).nil? ? 0 : product_feature(product_id).rating
   end
 
+  def description_by_product(product_id)
+    product_feature(product_id).description
+  end
+
   def update_rating(product_id, val)
     product_feature(product_id).update_attributes!(rating: val)
+  end
+
+  def update_description(product_id, text)
+    product_feature(product_id).update_attributes(description: text)
   end
 
   def products_ratings(product_ids)

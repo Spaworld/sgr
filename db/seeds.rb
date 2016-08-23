@@ -15,9 +15,10 @@ end
   product.features  << Feature.all
 end
 
-# Product.all.each do |product|
-#   product.features.each do |feature|
-#     feature.update_rating(product.id, rand(3..5))
-#   end
-# end
+Product.all.each do |product|
+  product.features.each do |feature|
+    feature.update_rating(product.id, rand(1...5))
+    feature.update_description(product.id, Faker::Lorem.paragraph(12))
+  end
+end
 

@@ -74,9 +74,10 @@ ActiveRecord::Schema.define(version: 20160819235158) do
   create_table "product_features", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "feature_id"
-    t.float    "rating",     default: 4.0
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.float    "rating",      default: 4.0
+    t.text     "description"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "products", force: :cascade do |t|

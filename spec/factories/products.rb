@@ -2,7 +2,7 @@ FactoryGirl.define do
 
   factory :product do
     title       { Faker::Commerce.product_name }
-    description { Faker::Lorem.paragraph }
+    description { Faker::Lorem.paragraph(12) }
     trait :with_photos do
       photos    { build_list(:photo, 1) }
     end

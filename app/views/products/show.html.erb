@@ -1,6 +1,30 @@
-<div class="product-show col-xs-12">
+<div class="product-show col-sm-12">
   <h1><%= @product.title %></h1>
-  <%= image_tag @product.photos.first.file, class: 'img-responsive', height: '500px' %>
+  <div class="row">
+    <div class="col-md-7 col-xs-12">
+      <%= image_tag @product.photos.first.file, class: 'img-responsive', height: '300px' %>
+    </div>
+    <div class="col-md-5 col-xs-12">
+      <h3>
+        Total Rating:
+        <span class="tag tag-<%= total_rating_colorizer(@product.total_rating) %> tag-pill pull-xs-right"><%= @product.total_rating.round(2)%></span></h3>
+      <div class="total-rating">
+        <%= render partial: 'layouts/rating', locals: { score: @product.total_rating.to_i } %>
+      </div>
+      <br/>
+      <%= render partial: 'products/product_features_reviews_table', locals: { product: @product } %>
+    </div>
+  </div>
+  <h2>Description:</h2>
   <p><%= @product.description %></p>
-  <%= render partial: 'products/product_features_reviews_table', locals: { product: @product } %>
+  <h2>Features: </h2>
+  <% @product.features.each do |feature| %>
+    <h5><%= image_tag feature.photos.first.file(:micro) %> <%= feature.name %></h5>
+    <div class="total-rating">
+      <%= render partial: 'layouts/rating', locals: { score: feature.rating_by_product(@product.id).to_i } %>
+      <p>
+    </div>
+      <%= feature.description_by_product(@product.id) %></p>
+
+  <% end %>
 </div>

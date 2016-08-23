@@ -1,5 +1,5 @@
 <table class="table table-sm table-bordered table-hover">
-  <thead>
+  <thead class="thead-inverse">
     <tr>
       <th>Feature:</th>
       <th>Score</th>
@@ -8,7 +8,10 @@
   <tbody>
   <% product.features.each do |feature| %>
   <tr>
-    <th scope="row"><%= feature.name %></th>
+    <th scope="row">
+      <%= image_tag feature.photos.first.file(:micro) %>
+      <%= feature.name %>
+    </th>
     <td><%= render partial: 'layouts/rating', locals: { score: feature.rating_by_product(product.id).to_i } %></td>
   </tr>
 <% end %>

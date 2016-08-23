@@ -14,3 +14,6 @@
 
 # Vim
 *.swp
+
+# Compiled Paperclip images
+/public/system/photos/*

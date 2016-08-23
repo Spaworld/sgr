@@ -11,6 +11,11 @@ body{
 .navbar-toggler{
   color: $white;
 }
+.total-rating{
+  .fa-star{
+    font-size:1.5em;
+  }
+}
 
 h1,h2,h3,h4,h5{
   font-family: 'Roboto Slab', serif;
