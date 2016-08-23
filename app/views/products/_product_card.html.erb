@@ -1,8 +1,8 @@
-<div class="card">
-  <%= image_tag product.photos.first.file(:thumb), class: 'card-img-top img-responsive' %>
+<div class="card product-card">
+  <%= image_tag product.photos.first.file, class: 'card-img-top img-responsive', height: '150px' %>
   <div class="card-block">
-    <h4 class="card-title"><%= product.title %></h4>
-    <p class="card-text"><%= product.description %></p>
+    <h5 class="card-title"><%= product.title %></h5>
+    <p class="card-text product-description"><%= truncate product.description, length: 40 %></p>
     <p class="card-text"><small class="text-muted"><strong>Rating:</strong> <br/><%= render partial: 'layouts/rating', locals: { score: product.total_rating.to_i } %></small></p>
     <%= link_to 'See more', brand_product_path(product.brands.first, product), class: 'btn btn-primary' %>
   </div>

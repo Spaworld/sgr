@@ -1,4 +1,4 @@
-<ul class="list-group list-group-flush">
+<ul class="list-group list-group-flush top-products">
   <a href="#" class="list-group-item disabled">
     Top Products
   </a>
@@ -8,8 +8,9 @@
         <%= image_tag product.photos.first.file(:thumb), class: 'img-responsive' %><br/>
         <%= render partial: 'layouts/rating', locals: { score: product.total_rating.to_i } %>
       <p class="list-group-item-text">
-        <%= product.description.first(50) %>
+        <%= truncate product.description, length: 40 %>
       </p>
+      <%= link_to 'read more', product_path(product), class: 'btn btn-secondary btn-sm' %>
     </li>
   <% end %>
 </ul>
