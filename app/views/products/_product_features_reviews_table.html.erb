@@ -9,7 +9,7 @@
   <% product.features.each do |feature| %>
   <tr>
     <th scope="row">
-      <%= image_tag feature.photos.first.file(:micro) %>
+      <%= image_tag feature.photos.first.file(:micro), class: 'hidden-md-down' %>
       <%= feature.name %>
     </th>
     <td><%= render partial: 'layouts/rating', locals: { score: feature.rating_by_product(product.id).to_i } %></td>

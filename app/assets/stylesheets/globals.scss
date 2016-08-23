@@ -20,6 +20,9 @@ body{
 h1,h2,h3,h4,h5{
   font-family: 'Roboto Slab', serif;
 }
+img{
+  max-width: 100%;
+}
 
 @mixin read-more-fade{
   &:before{

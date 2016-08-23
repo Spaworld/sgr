@@ -6,7 +6,7 @@ end
 
 ['Amerec', 'Kohler', 'MrSteam', 'Steamist', 'SteamSpa', 'Thermasol'].each do |brand_name|
   brand             = FactoryGirl.create(:brand, name: brand_name)
-  brand_photo       = FactoryGirl.create(:photo, file: File.new("#{Rails.root}/spec/support/images/#{brand_name.downcase}-logo.jpg") )
+  brand_photo       = FactoryGirl.create(:photo, file: File.new("#{Rails.root}/spec/support/images/#{brand_name.downcase}-logo.png") )
   product           = FactoryGirl.create(:product, title: "#{brand_name} Steam Generator")
   product_photo     = FactoryGirl.create(:photo, file: File.new("#{Rails.root}/spec/support/images/#{brand_name.downcase}-steam-generator.jpg") )
   brand.photos      << brand_photo
