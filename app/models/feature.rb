@@ -8,7 +8,7 @@ class Feature < ActiveRecord::Base
   has_many :products, through: :product_features
 
   def rating_by_product(product_id)
-    product_feature(product_id).nil? ? 0 : product_feature(product_id).rating
+    product_feature(product_id).nil? ? 0 : product_feature(product_id).rating.round(2)
   end
 
   def description_by_product(product_id)

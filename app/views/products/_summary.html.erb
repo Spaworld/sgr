@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-block">
+        <%# <h4 class="card-title"><%= product.title %1></h4> %>
+    <span class="tag tag-<%= total_rating_colorizer(@product.total_rating) %> tag-pill pull-xs-right"><%= @product.total_rating.round(2)%></span>
+        <%# <%= image_tag @product.brands.first.photos.first.file(:thumb) %1> %>
+    <h6 class="card-subtitle text-muted">Model: <%= product.model_number %></h6>
+    <%= render partial: 'layouts/rating', locals: { score: @product.total_rating.to_i } %>
+
+  </div>
+  <div class="card-block"a>
+    <p class="card-text"><%= truncate @product.description, length: 40 %></p>
+    <a href="#description" class="card-link">Read full descripton</a>
+  </div>
+  <ul class="list-group list-group-flush">
+    <% @product.features.each do |feature| %>
+      <li class="list-group-item small">
+      <%= image_tag feature.photos.first.file(:micro) %> <%= feature.name %>
+      <span class="pull-xs-right">
+        <%= render partial: 'layouts/rating', locals: { score: feature.rating_by_product(@product.id).to_i } %>
+      </span>
+      </li>
+    <% end %>
+  </ul>
+</div>
