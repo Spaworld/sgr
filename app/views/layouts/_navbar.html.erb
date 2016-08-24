@@ -8,9 +8,15 @@
       <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ratings</a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">SteamSpa</a>
-        <a class="dropdown-item" href="#">Kohler</a>
-        <a class="dropdown-item" href="#">Steamist</a>
+        <h6 class="dropdown-header"> Generators: </h6>
+        <% Product.all.each do |product| %>
+          <%= link_to "#{product.brands.first.name} #{product.model_number}", product_path(product), class: 'dropdown-item' %>
+        <% end %>
+        <div class="dropdown-divider"></div>
+        <h6 class="dropdown-header"> Brands: </h6>
+        <% Brand.all.each do |brand| %>
+          <%= link_to brand.name, brand_path(brand), class: 'dropdown-item' %>
+        <% end %>
       </div>
       </li>
       <li class="nav-item">
