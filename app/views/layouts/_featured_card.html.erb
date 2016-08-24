@@ -1,0 +1,13 @@
+<div class="card card-inverse card-info text-xs-center">
+  <div class="card-block">
+    <h4>Read this first</h4>
+    <%= image_tag 'wet-system-elements', class: 'img-rounded' %>
+    <blockquote class="card-blockquote">
+      <p><%= truncate Article.find_by_name('About').body, length: 20 %>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+    </blockquote>
+    <br/>
+    <a class="btn btn-success" href="#">View Article</a>
+  </div>
+</div>
