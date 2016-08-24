@@ -15,6 +15,10 @@ end
   product.features  << Feature.all
 end
 
+FactoryGirl.create(:article, :with_photos, title: 'About')
+
+9.times { FactoryGirl.create(:article, :with_photos) }
+
 Product.all.each do |product|
   product.features.each do |feature|
     feature.update_rating(product.id, rand(1...5))

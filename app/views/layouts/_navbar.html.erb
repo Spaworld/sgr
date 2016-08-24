@@ -26,10 +26,19 @@
       <%= link_to 'Companies', brands_path, class: 'nav-link' %>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="#">About</a>
+      <%= link_to 'About', article_path(@navbar.about_page), class: 'nav-link' %>
+      <%# <%= link_to 'About', articles_path(Article.find_by_name('About').id), class: 'nav-link' %1> %>
       </li>
       <li class="nav-item pull-xs-right">
       <a class="nav-link" href="#"><span class="tag tag-info">Free Buying Guide</span></a>
+      </li>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Learning Center</a>
+      <div class="dropdown-menu">
+        <% Article.all.each do |article| %>
+          <%= link_to article.title, article_path(article.id), class: 'dropdown-item' %>
+        <% end %>
+      </div>
       </li>
     </ul>
   </div>

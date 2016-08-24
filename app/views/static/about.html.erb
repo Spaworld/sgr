@@ -1,0 +1,7 @@
+<div class="col-sm-12">
+  <%= image_tag @content.photos.first.file, class: 'img-responsive' %>
+  <h1><%= @content.title %></h1>
+  <p><%= @content.body %> </p>
+  <h4> Contact SteamGeneratorReviews </h4>
+  <%= render partial: 'layouts/contact_form', locals: { call_to_action: 'Contact Us' } %>
+</div>

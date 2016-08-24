@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   def set_top_products
     @top_products = Product.all
+    @navbar = Navbar.new
   end
 
 end

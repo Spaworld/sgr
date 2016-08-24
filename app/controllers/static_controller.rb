@@ -5,4 +5,8 @@ class StaticController < ApplicationController
     @top_products = Product.select { |x| x.total_rating }.sort
   end
 
+  def about
+    @content = Article.find_by_name('About')
+  end
+
 end
